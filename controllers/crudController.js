@@ -30,3 +30,7 @@ exports.delete = async (req, res) => {
     
     res.redirect(`http://${platform.baseURL}:${platform.port}/select`);
 }
+
+exports.test = async (req, res) => {
+    res.send("Sukses ! ini endpoint test deploy !");
+}
