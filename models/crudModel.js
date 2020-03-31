@@ -1,12 +1,14 @@
 const pool = require('../config/db.js');
 
 exports.insert = (data) => {
-    var sql = 'insert into data set ?';
-    pool.query(sql, [data], (err, result)=>
-    {
-        if (err) throw err;
+    return new Promise(function(resolve) {
+        var sql = 'insert into data set ?';
+        pool.query(sql, [data], (err, result)=>
+        {
+            if (err) throw err;
 
-        resolve(err);
+            resolve(err);
+        })
     });
 };
 
