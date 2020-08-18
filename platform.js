@@ -3,5 +3,6 @@ const baseURL = 'localhost';
 
 module.exports = {
     port,
-    baseURL
+    baseURL,
+    projectDir: __dirname
 };

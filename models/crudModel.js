@@ -1,21 +1,21 @@
 const pool = require('../config/db.js');
 
 exports.insert = (data) => {
-    var sql = 'insert into data set ?';
-    pool.query(sql, [data], (err, result)=>
-    {
-        if (err) throw err;
+    return new Promise(function(resolve, reject) {
+        var sql = 'insert into data set ?';
+        pool.query(sql, [data], (err, result)=> {
+            if (err) reject(err);
 
-        resolve(err);
+            resolve(true);
+        });
     });
 };
 
 exports.select = () => {
-    return new Promise(function(resolve) {
+    return new Promise(function(resolve, reject) {
         var sql = 'select * from data';
-        pool.query(sql, (err, result)=>
-        {
-            if (err) throw err;
+        pool.query(sql, (err, result)=> {
+            if (err) reject(err);
 
             resolve(result);
         })
@@ -23,10 +23,24 @@ exports.select = () => {
 };
 
 exports.delete = (data) => {
-    var id = data.id;
-    var sql = 'delete from data where id = ?';
-    pool.query(sql, [id], (err, result)=>
-    {
-        if (err) throw err;
-    })
+    return new Promise(function(resolve, reject) {
+        var id = data.id;
+        var sql = 'delete from data where id = ?';
+        pool.query(sql, [id], (err, result)=> {
+            if (err) reject(err);
+
+            resolve(true);
+        })
+    });
+};
+
+exports.selectbyID = (id) => {
+    return new Promise(function(resolve, reject) {
+        var sql = `select * from data where id = ${id}`;
+        pool.query(sql, (err, result)=> {
+            if (err) reject(err);
+
+            resolve(result[0]);
+        })
+    });
 };
