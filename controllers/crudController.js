@@ -19,9 +19,8 @@ exports.insert = async (req, res) => {
 
     var data = {
         name: req.body.name, 
-        email:req.body.email, 
-        phonenumber: req.body.phonenumber,
-        profile_picture: filename
+        price: req.body.price,
+        filename
     }
 
     let result = crudModel.insert(data);
@@ -56,6 +55,23 @@ exports.select = async (req, res) => {
     })
 }
 
+exports.cart = async (req, res) => {
+    let result = crudModel.cart(req.body.ids);
+    result.then(function(result){
+        res.json({
+            status: 200,
+            success: true,
+            return: result
+        });
+    }).catch(function(err){
+        res.json({
+            status: 500,
+            success: false,
+            message: err
+        })
+    })
+}
+
 exports.delete = async (req, res) => {
     var data = {
         id: req.body.id
@@ -63,7 +79,7 @@ exports.delete = async (req, res) => {
 
     let result = crudModel.selectbyID(data.id);
     result.then(function(result){
-        fs.unlink(platform.projectDir + "/images/" + result.profile_picture, function(err){
+        fs.unlink(platform.projectDir + "/images/" + result.filename, function(err){
             if(err) console.log(err);
        });  
     }).then(function(){

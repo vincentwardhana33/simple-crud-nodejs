@@ -2,7 +2,7 @@ const pool = require('../config/db.js');
 
 exports.insert = (data) => {
     return new Promise(function(resolve, reject) {
-        var sql = 'insert into data set ?';
+        var sql = 'insert into product set ?';
         pool.query(sql, [data], (err, result)=> {
             if (err) reject(err);
 
@@ -13,7 +13,22 @@ exports.insert = (data) => {
 
 exports.select = () => {
     return new Promise(function(resolve, reject) {
-        var sql = 'select * from data';
+        var sql = 'select * from product';
+        pool.query(sql, (err, result)=> {
+            if (err) reject(err);
+
+            resolve(result);
+        })
+    });
+};
+
+exports.cart = (ids) => {
+    ids = ids.join(', ');
+    
+    if (ids == '') ids = '0';
+
+    return new Promise(function(resolve, reject) {
+        var sql = `select * from product where id in (${ids})`;
         pool.query(sql, (err, result)=> {
             if (err) reject(err);
 
@@ -25,7 +40,7 @@ exports.select = () => {
 exports.delete = (data) => {
     return new Promise(function(resolve, reject) {
         var id = data.id;
-        var sql = 'delete from data where id = ?';
+        var sql = 'delete from product where id = ?';
         pool.query(sql, [id], (err, result)=> {
             if (err) reject(err);
 
@@ -36,7 +51,7 @@ exports.delete = (data) => {
 
 exports.selectbyID = (id) => {
     return new Promise(function(resolve, reject) {
-        var sql = `select * from data where id = ${id}`;
+        var sql = `select * from product where id = ${id}`;
         pool.query(sql, (err, result)=> {
             if (err) reject(err);
 

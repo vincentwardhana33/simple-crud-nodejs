@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 31, 2020 at 03:55 PM
+-- Generation Time: Aug 24, 2020 at 04:34 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -25,21 +25,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data`
+-- Table structure for table `product`
 --
 
-CREATE TABLE `data` (
+CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `phonenumber` varchar(100) NOT NULL,
-  `profile_picture` varchar(100) NOT NULL
+  `price` int(11) NOT NULL,
+  `filename` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for table `data`
+-- Indexes for dumped tables
 --
-ALTER TABLE `data`
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -47,10 +50,10 @@ ALTER TABLE `data`
 --
 
 --
--- AUTO_INCREMENT for table `data`
+-- AUTO_INCREMENT for table `product`
 --
-ALTER TABLE `data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
