@@ -22,8 +22,9 @@ $ bin/setup
 ```
 
 **Setup config**
-1. Setup database config in ```config/db.js```.
-2. Import simple-crud.sql into your MySQL database.
+1. Import simple-crud.sql into your MySQL database.
+2. Setup database config in ```config/db.js```.
+
 
 
 ## Run Application
