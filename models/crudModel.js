@@ -23,9 +23,8 @@ exports.select = () => {
 };
 
 exports.cart = (ids) => {
-    ids = ids.join(', ');
-    
-    if (ids == '') ids = '0';
+    if (ids.length > 0) ids = ids.join(', ');
+    else ids = '0';
 
     return new Promise(function(resolve, reject) {
         var sql = `select * from product where id in (${ids})`;
