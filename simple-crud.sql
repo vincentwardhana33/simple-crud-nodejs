@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 24, 2020 at 04:34 PM
+-- Generation Time: Aug 26, 2020 at 04:15 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -25,6 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin_login`
+--
+
+CREATE TABLE `admin_login` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin_login`
+--
+
+INSERT INTO `admin_login` (`id`, `username`, `password`) VALUES
+(1, 'vincent', '$2b$10$4JzZvd2xFhs7nRnOqA6sde0HX3Tx3MLSk/6L6iQv.ooLoC3g1J1du'),
+(2, 'wardhana', '$2b$10$4JzZvd2xFhs7nRnOqA6sde0HX3Tx3MLSk/6L6iQv.ooLoC3g1J1du');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
@@ -36,8 +56,10 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for dumped tables
+-- Indexes for table `admin_login`
 --
+ALTER TABLE `admin_login`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `product`
@@ -50,10 +72,16 @@ ALTER TABLE `product`
 --
 
 --
+-- AUTO_INCREMENT for table `admin_login`
+--
+ALTER TABLE `admin_login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
