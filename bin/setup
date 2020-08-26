@@ -1,5 +1,7 @@
 echo "Copying config files.."
 cp ./config/db_example.js ./config/db.js
+cp ./config/encrpyt_example.js ./config/encrypt.js
+cp ./config/jwt_example.js ./config/jwt.js
 mkdir images
 
 echo "Installing dependencies.."
