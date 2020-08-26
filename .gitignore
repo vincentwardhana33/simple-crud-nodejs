@@ -1,5 +1,6 @@
 node_modules/
 config/db.js
 config/jwt.js
+config/encrypt.js
 images/*
 .DS_Store

@@ -1,8 +1,9 @@
 const authModel = require('../models/authModel');
 const jwt = require('../lib/jwt');
+const bcrypt = require('../lib/bcrypt');
 
 exports.login = async (req, res) => {
-    let adminID = authModel.Login(req.body.username, req.body.password);
+    let adminID = authModel.Login(req.body.username, bcrypt.Encrypt(req.body.password));
     adminID.then(function(result){
         if (result.length > 0){
             // berhasil login
