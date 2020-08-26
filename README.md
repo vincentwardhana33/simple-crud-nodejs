@@ -1,6 +1,6 @@
 # Simple CRUD NodeJS
 
-This repository is a simple example for creating CRUD API using NodeJS Express.
+This repository is a simple example for creating CRUD API using NodeJS Express, and Login using JWT.
 
 Front-End ReactJS Repository: [here](https://github.com/vincentwardhana33/simple-crud-react.git)
 
