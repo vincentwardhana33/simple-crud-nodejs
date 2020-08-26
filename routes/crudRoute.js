@@ -9,5 +9,6 @@ router.post('/insert', crudController.insert);
 router.get('/select', crudController.select);
 router.post('/delete', crudController.delete);
 router.post('/cart', crudController.cart);
+router.post('/admindata', authController.admindata);
 
 module.exports = router;

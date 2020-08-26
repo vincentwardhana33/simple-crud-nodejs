@@ -1,17 +1,22 @@
 const authModel = require('../models/authModel');
+const jwt = require('../lib/jwt');
 
 exports.login = async (req, res) => {
     let adminID = authModel.Login(req.body.username, req.body.password);
     adminID.then(function(result){
         if (result.length > 0){
             // berhasil login
-            console.log(result[0].id);
-            // call JWT -> generate token
+            let data = {
+                user_id: result[0].id,
+                username: result[0].username
+            }
+
+            let token = jwt.Encode(data);
 
             res.json({
                 code: 200,
                 success: true,
-                token: ""
+                token
             })
         } else {
             // gagal login
@@ -27,5 +32,15 @@ exports.login = async (req, res) => {
             code: 500,
             success: false
         })
+    })
+}
+
+exports.admindata = async (req, res) => {
+    let data = jwt.Decode(req.body.token);
+
+    res.json({
+        code: 200,
+        success: true,
+        return : data
     })
 }
